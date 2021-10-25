@@ -24,3 +24,5 @@ SELECT 費目 AS ITEM , 入金額 AS RECEIVE, 出金額 AS PAY
 
 INSERT INTO テーブル名
  VALUES　(値１、値２、値３)
+
+ --SQL文の中に直接記述されるデータのことをリテラルという。
