@@ -21,3 +21,5 @@ SELECT * FROM 家計簿
  SELECT *
    FROM 家計簿
  WHERE 出金額 BETWEEN 100 AND 3000 
+
+ --IN
