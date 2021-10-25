@@ -13,3 +13,11 @@ WHERE 出金額　IS NULL
 
 SELECT * FROM 家計簿
  WHERE メモ　LIKE '%1月%'
+
+ --BETWEEN演算子
+
+ --BETWEEN演算子は、ある範囲内に値が収まっているかを判定する
+
+ SELECT *
+   FROM 家計簿
+ WHERE 出金額 BETWEEN 100 AND 3000 
