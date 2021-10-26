@@ -53,3 +53,10 @@ WHERE  名称 = 'スッキリ勇者クエスト'
     OR  販売店  = 'B' 
    AND カテゴリ = 'game'
     OR カテゴリ = 'DVD'
+
+--複数の論理演算子を使ったSELECT文(条件式にカッコをつける)
+ SELECT * FROM 涼君の買い物リスト
+  WHERE ( 販売店  = 'A' 
+    OR  販売店  = 'B' ) 
+   AND ( カテゴリ = 'game'
+    OR カテゴリ = 'DVD')
