@@ -40,3 +40,16 @@ SELECT *
 
 条件式1 AND 条件式２
 条件式１ OR 条件式2
+
+--2つの条件式を組み合わせたWHERE句
+UPDATE 涼君の買い物リスト 
+ SET　　価格 = 6200
+WHERE  名称 = 'スッキリ勇者クエスト' 
+ AND   販売店 = 'B'
+
+ --複数の論理演算子を使ったSELECT文
+ SELECT * FROM 涼君の買い物リスト
+  WHERE 販売店  = 'A' 
+    OR  販売店  = 'B' 
+   AND カテゴリ = 'game'
+    OR カテゴリ = 'DVD'
