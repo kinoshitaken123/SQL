@@ -20,3 +20,27 @@
  SELECT * FROM 気象観測
  　WHERE 降水量 IS NULL OR 最高気温　IS NULL
     OR 最低気温　IS NULL OR 湿度 IS NULL
+
+--3-2
+1 都道府県名が川で終わる都道県名
+ SELECT 都道府県名
+ FROM 都道府県
+ WHERE 都道府県名 LIKE '%川'
+
+2 都道府県名に島が含まれる都道県名
+SELECT 都道府県名
+FROM 都道府県
+WHERE 都道府県名 LIKE '%島%'
+
+3 都道府県名が愛で始まる都道県名
+SELECT 都道府県名
+FROM 都道府県
+WHERE 都道府県名 LIKE '愛%'
+
+4 都道府県名と県庁所在が一致するデータ
+SELECT * 都道府県
+ WHERE 都道府県名 = 県庁所在
+
+5 都道府県名と県庁所在地が一致しないデータ  
+SELECT * 都道府県
+ WHERE 都道府県名 <> 県庁所在
