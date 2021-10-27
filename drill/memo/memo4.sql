@@ -87,3 +87,13 @@ SELECT DISTINCT 列名・・・
     SELECT 費目 FROM 家計簿
     EXCEPT
     SELECT 費目 FROM 家計簿アーカイブ
+
+    --積集合を求める
+    SELECT 列名・・・　FROM　テーブル名
+    INTERSECT
+    SELECT 列名・・・　FROM　テーブル名
+
+    --積集合を取得する
+    SELECT 費目 FROM 家計簿
+    INTERSECT
+    SELECT 費目 FROM 家計簿アーカイブ
