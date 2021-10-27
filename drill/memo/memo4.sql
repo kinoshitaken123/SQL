@@ -28,3 +28,29 @@ SELECT DISTINCT 列名・・・
 
   SELECT * FROM 家計簿
    ORDER BY 入金額 DESC, 出金額 DESC
+
+   --OFFSET FETCH 先頭から数行だけ取得する
+   SELECT　列名
+   FROM　テーブル名
+   ORDER BY　列名
+   OFFSET 先頭から除外する行数　ROWS
+   (FETCH NEXT 取得行数 ROWS ONLY)
+
+   MYSQL,MariaDB,SQLiteではサポートされていない。
+
+   --出金がくの高い順に３件取得する
+   SELECT 費目、出金額
+   FROM　家計簿
+   ORDER BY 出金額　DESC
+   OFFSET 0 ROWS
+    FETCH NEXT 3 ROWS ONLY
+
+    --OFFSET句には、先頭から除外したい行数を記述する。省略はできず、
+    --除外せずに１件目から取得したい場合には0を指定する
+
+    --3番目に高い出金額だけを取得する
+    SELECT 費目、出金額
+    FROM　家計簿
+    ORDER BY 出金額　DESC
+    OFFSET 2 ROWS
+    FETCH NEXT 1 ROWS ONLY
