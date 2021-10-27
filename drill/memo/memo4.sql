@@ -54,3 +54,22 @@ SELECT DISTINCT 列名・・・
     ORDER BY 出金額　DESC
     OFFSET 2 ROWS
     FETCH NEXT 1 ROWS ONLY
+
+    --UNION 和集合　２つの検索結果を足し合わせたもの
+
+    --EXCEPT 差集合　最初の検索結果から次の検索結果と重複する部分を取り除いたもの
+
+    --INTERSECT 積集合　２つの検索結果で重複するもの
+
+    --2つのSELECT文の結果を足し合わせる
+    SELECT 文１
+     UNION (ALL)
+    SELECT 文2
+
+    --和集合を取得
+    SELECT 費目,入金額,出金額
+    FROM 家計簿
+    UNION
+    SELECT 費目,入金額,出金額
+    FROM 家計簿アーカイブ
+    ORDER BY 2,3,1
