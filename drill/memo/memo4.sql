@@ -73,3 +73,17 @@ SELECT DISTINCT 列名・・・
     SELECT 費目,入金額,出金額
     FROM 家計簿アーカイブ
     ORDER BY 2,3,1
+
+    --2つのSELECT文の結果の差を得る
+
+    --EXCEPT / MINUS -差集合を求める
+    SELECT 文１
+    EXCEPT (ALL)
+    SELECT 文2
+
+    Oracle DBではEXCEPTの代わりにMINUSというキーワードを使う。
+
+    --差集合を取得する
+    SELECT 費目 FROM 家計簿
+    EXCEPT
+    SELECT 費目 FROM 家計簿アーカイブ
