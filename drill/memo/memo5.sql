@@ -104,5 +104,6 @@ SELECT 日付、費目、
  SELECT 日付,TRUNC(入金額/110.0,0) AS 入金ドル,
         TRUNC(出金額/110.0,0) AS 出金ドル
  FROM 家計簿
- 
+
+ SELECT * FROM 家計簿　WHERE 日付 > CURRENT_DATE
         
