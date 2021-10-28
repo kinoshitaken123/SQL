@@ -56,3 +56,8 @@ UPDATE 家計簿
 
 --CONTACT 文字列を連結する
 SELECT CONTACT(費目, ':' || メモ) FROM 家計簿
+
+SELECT 出金額, ROUND (出金額,-2) AS 百円単位の出金額
+ FROM 家計簿
+
+ --出金額の下２桁目、つまり１０の位で四捨五入される
