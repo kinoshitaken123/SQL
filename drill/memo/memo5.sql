@@ -68,3 +68,11 @@ SELECT 出金額, ROUND (出金額,-2) AS 百円単位の出金額
  --POWER ある値のべき条を計算したい場合、*演算子でも実装可能だがPOWER関数を用いると便利
  POWER (数値を表す列、何乗するかを指定する数値)
  POWER(出金額,3)
+
+ --現在の日時を得る関数
+ CURRENT_DATE 現在の日付
+ CURRENT_TIME 現在の時刻
+
+ --日付を自動的に取得して登録する
+ INSERT INTO 家計簿
+ VALUES (CURRENT_DATE, '食費', 'ドーナツを買った', 0, 260)
