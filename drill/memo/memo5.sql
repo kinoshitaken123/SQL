@@ -36,3 +36,23 @@ SELECT 費目, 入金額
  END AS 収入の分類
 FROM 家計簿
 WHERE 入金額 > 0   
+
+--LENGTH関数
+SELECT メモ、 LENGTH(メモ) AS メモの長さ
+ FROM 家計簿
+
+--文字列を置換する関数
+REPLACE(置換対象の文字列、置換前の部分文字列、置換後の部分文字列)
+
+--メモの一部を置換する
+UPDATE 家計簿
+ SET メモ = REPLACE(メモ, '購入','買った')
+
+ --SUBSTRING/SUBSTR 一部を抽出する
+ 文字列の一部分だけを取り出したい場合にはSUBSTRING関数またはSUBSTR関数を利用する。
+
+ SELECT * FROM 家計簿
+  WHERE SUBSTRING(費目,1,3) LIKE '%費%'
+
+--CONTACT 文字列を連結する
+SELECT CONTACT(費目, ':' || メモ) FROM 家計簿
