@@ -88,3 +88,15 @@ SELECT 出金額, ROUND (出金額,-2) AS 百円単位の出金額
         COALSESCE(メモ、'(メモはNULLです)') AS メモ,
         入金額, 出金額
  FROM 家計簿       
+
+ --家計簿で入出金の差額も表示したい
+ SELECT 日付、費目、メモ、入金額、出金額
+ 　　　　入金額 -　出金額　AS 入出金差額
+ FROM 家計簿
+
+--8文字以上のメモは「・・・」で末尾を省略したい
+SELECT 日付、費目、
+  CASE WHEN LENGTH(メモ) >= THEN SUBSTRING(メモ、1、8) || '...'
+       ELSE メモ
+  END AS メモ、入金額、出金額
+ FROM 家計簿     
