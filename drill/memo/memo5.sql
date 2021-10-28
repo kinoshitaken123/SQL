@@ -76,3 +76,15 @@ SELECT 出金額, ROUND (出金額,-2) AS 百円単位の出金額
  --日付を自動的に取得して登録する
  INSERT INTO 家計簿
  VALUES (CURRENT_DATE, '食費', 'ドーナツを買った', 0, 260)
+
+ --COALSESCE 最初に登場するNULLでない値を返す
+
+ SELECT COALSESCE('A','B','C');
+ SELECT COALSESCE('NULL','B','C');
+ SELECT COALSESCE('NULL','B','NULL');
+
+ --NULLを明示的に表示する
+ SELECT 日付,費目、
+        COALSESCE(メモ、'(メモはNULLです)') AS メモ,
+        入金額, 出金額
+ FROM 家計簿       
