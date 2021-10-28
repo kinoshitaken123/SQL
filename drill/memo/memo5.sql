@@ -106,4 +106,5 @@ SELECT 日付、費目、
  FROM 家計簿
 
  SELECT * FROM 家計簿　WHERE 日付 > CURRENT_DATE
-        
+
+ SELECT 日付,COALSESCE(メモ、費目、'不明') AS 備考 FROM 家計簿       
