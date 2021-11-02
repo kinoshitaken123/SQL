@@ -47,6 +47,10 @@ GROUP BY 月
  4  SELECT 社員名,COUNT(*) AS 入室回数
      FROM 入退室管理
     GROUP BY 社員名
-    HAVING COUNT(*) > 10 
- 5
+    HAVING COUNT(*) > 10
+
+ 5 SELECT 日付, COUNT(社員名) AS 対応社員数
+ 　  FROM  入退室管理
+ 　 WHERE  事由区分 = '3'
+    GROUP BY 日付
 
