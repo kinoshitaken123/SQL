@@ -10,3 +10,7 @@ FROM 家計簿
 SELECT COUNT(*) AS 食費の行動
   FROM 家計簿
  WHERE 費目　= '食費' 
+
+ --NULLをぜろとして平均を求める
+ SELECT AVG(COALESCE(出金額,0)) AS 出金額の平均
+ 　FROM 家計簿
