@@ -50,3 +50,35 @@ SELECT * FROM 家計簿アーカイブ　
    FROM 家計簿
   WHERE 出金額 > 0
   GROUP BY 費目 
+
+  --食費の合計額を集計して集計テーブルを更新したい
+  UPDATE 家計簿集計
+  　SET 合計 = (SELECT SUN(出金額)
+  　　　　　　　　FROM 家計簿アーカイブ
+               WHERE 出金額　> 0
+               AND 費目　 = '食費')
+   WHERE 費目 = '食費'
+
+   --1月と12月の出金額の合計を知りたい
+   SELECT G.タイトル,G.出金額計
+   　FROM (SELECT '合計0１月'　AS タイトル,SUM(出金額)AS 出金額計
+             FROM 家計簿アーカイブ
+             WHERE 日付 >= '2018-01-01'
+             AND 日付　<= '2018-01-31'
+           UNION
+           SELECT '合計12月'　AS タイトル,SUN(出金額) AS 出金額計
+           　FROM 家計簿アーカイブ  
+           WHERE 日付 >= '2017-12-01'
+             AND 日付　<= '2018-12-31') AS G            
+
+    --今月初めて発生した費用を知りたい
+    　SELECT　DISTINCT 費目　FROM 家計簿
+    　　WHERE 費目　NOT IN (SELECT 費目 FROM　家計簿アーカイブ)
+
+    --今月の給料で先月までよりも高い額であれば知りたい
+    SELECT * FROM 家計簿
+     WHERE 費目 = '給料'
+       AND 入金額 > ALL(SELECT 入金額 FROM 家計簿アーカイブ
+       WHERE 費目 = '給料')     
+       INSERT INTO 家計簿アーカイブ
+       SELECT * FROM 家計簿   
