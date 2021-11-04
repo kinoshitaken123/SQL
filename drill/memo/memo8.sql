@@ -37,3 +37,33 @@ ON　家計簿.費目ID　＝　費目.ID
 JOIN 経費区分
 ON  費目.経費区分ID = 経費区分.ID        
 
+--副問い合わせの結果と結合するSQL
+SELECT 日付,費目.名前, 費目.経費区分ID
+  FROM 家計簿
+  JOIN (SELECT * FROM 費目
+   WHERE 経費区分ID = 1 
+  )AS 費目
+  ON 家計簿.費目ID　＝　費目.ID
+
+  --自分自身と結合するSQL文
+  SELECT A.日付、A.メモ,A.関連日付,B.メモ
+    FROM 家計簿 AS A
+    LEFT JOIN 家計簿 AS B
+           ON A.関連日付 = B.日付
+
+   --家計簿テーブルと費目テーブルを結合して、費目を日本語で表示
+   SELECT 日付、名前 AS 費目、メモ、入金額、出金額
+   FROM　家計簿
+   JOIN　費目
+   ON 家計簿.費目ID　＝費目.ID
+
+   --家計簿テーブルの費目IDが定着されない行も結果ひょうに出力されるように結合したい
+   SELECT 日付、名前　AS費目、メモ、入金額、出金額
+   FROM　家計簿
+   LEFT JOIN　費目
+   ON 家計簿.費目ID　= 費目.ID
+
+   --給料という名前の費目に関する、家計簿テーブルの行を見たい
+   SELECT 家計簿　* FROM 家計簿
+   　JOIN (SELECT * FROM 費目　WHERE 名前 = '給料') AS 費目
+       ON 家計簿.費目ID　＝　費目.ID
