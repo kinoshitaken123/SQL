@@ -14,3 +14,11 @@ SELECT 社員番号,S.名前　AS 名前, B.名前 AS 部署名
     FROM  社員　AS $1
     LEFT JOIN 社員　AS $2
     ON $1.上司ID　$2.社員番号
+
+    SELECT 社員番号,$.名前 AS 名前、
+           B.名前 AS 部署名,K.名前　AS 勤務地
+    FROM
+    JOIN
+    ON
+    JOIN
+    ON       
