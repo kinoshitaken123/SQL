@@ -32,3 +32,36 @@ SELECT * FROM 家計簿
  SELECT ~ ;
  SELECT ~ ;
  COMMIT;
+
+ --トランザクション分離レベル
+ SET TRANSACTION ISOLATION LEVEL 分離レベル名
+ SET CURRENT ISOLATION 分離レベル名
+
+--明示的な行ロックの取得
+SELECT ~ FROM UPDATE 
+
+--デッドロックを予防する方法
+--①トランザクションの時間を短くする
+--②同じ順番でロックするようにする
+
+BEGIN;
+INSERT INTO 家計簿
+VALUES('2018-03-20','居住費','4月の家賃',0,60000);
+INSERT INTO 家計簿
+VALUES('2018-03-20','手数料','4月の家賃振り込み',420);
+COMMIT;
+
+BEGIN;
+DELETE FROM 家計簿 WHERE 日付 = '2018-03-20';
+ROLLBACK;
+
+BIGIN;
+LOCK TABLE 家計簿 IN EXCLUSIVE MODE;
+INSERT INTO 統計結果
+SELECT 'データ件数',COUNT(*) FROM 家計簿;
+INSERT INTO 統計結果
+SELECT '出金がく平均',AVG(出金額) FROM 家計簿;
+COMMIT;
+
+
+
