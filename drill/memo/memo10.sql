@@ -29,3 +29,17 @@ CREATE TABLE 家計簿 (
 INSERT INTO 家計簿(日付,メモ,出金額)
 　　　VALUES ('2018-04-12','詳細は後で',60000)
 
+--デフォルト値の指定を含むテーブル
+CREATE TABLE テーブル名(
+    列名　列名 DEFAULT デフォルト値,
+    :
+)
+
+--家計簿テーブルを作成する（デフォルト値を活用）
+CREATE TABLE 家計簿(
+    日付　DATE,
+    費目ID INTEGER,
+    メモ　VARCHER(100) DEFAULT '不明',
+    入金額 INTEGER DEFAULT 0,
+    出金額 INTEGER DEFAULT 0
+)
