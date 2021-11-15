@@ -43,3 +43,35 @@ CREATE TABLE 家計簿(
     入金額 INTEGER DEFAULT 0,
     出金額 INTEGER DEFAULT 0
 )
+
+--DROP TABLE文
+DROP TABLE テーブル名
+
+--ALTER TABLE文
+テーブル定義の内容を変更するには、ALTER TABLE文
+このテーブルの「何を」「どう」帰るのかを指定する必要がある。
+
+--列の追加
+ALTER TABLE テーブル名　ADD 列名　型　制約
+
+--列の削除
+ALTER TABLE テーブル名　DROP 列名　型　制約
+
+列の追加と削除
+
+--追加するとき
+ALTER TABLE 家計簿　ADD 関連日　DATE;
+
+--削除するとき
+ALTER TABLE 家計簿　DROP 関連日;
+
+
+--全権のデータを高速に削除する
+TRUNCATE TABLE文
+
+
+
+
+
+
+
