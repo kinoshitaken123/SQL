@@ -69,9 +69,34 @@ ALTER TABLE 家計簿　DROP 関連日;
 --全権のデータを高速に削除する
 TRUNCATE TABLE文
 
+--制約
+あえて制限することで安全性を高める
+予期しない値を格納できないように制限をかけることで、
+人為的みすによるデータ破壊の可能性を減らすことができる。
+
+--CREATE TABLE 文中における制約の指定
+CREATE TABLE テーブル名(
+    列名　型　制約の指定,
+    :
+)
+
+--基本的な３つの制約を活用
+CREATE TABLE 家計簿　(
+    日付　DATE
+    費目ID INTEGER,
+    メモ　　VARCHAR(100) DEFAULT '不明'　NOT NULL,
+    入金額　DEFAULT 0 CHECK(入金爆 >= 0),
+    出金額　DEFAULT 0 CHECK(入金爆 >= 0),
+);
+CREATE TABLE 費目 (
+    ID INTEGER,
+    名前　VARCHAR(40) UNIQUE
+);
 
 
+--デフォルト値が設定されていなければ、エラーにならない
+INSERT INTO 家計簿　(日付,費目ID,メモ,入金額,出金額)
+　　　VALUES ('2018-04-04',2,'家賃',0,60000);
 
-
-
-
+INSERT INTO 家計簿(日付、費目ID,入金額、出金額)
+     VALUES ('2018-04-05',3,0,1350);
