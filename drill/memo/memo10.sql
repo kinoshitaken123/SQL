@@ -105,4 +105,16 @@ INSERT INTO 家計簿(日付、費目ID,入金額、出金額)
  ある列の内容が決して重複してはならない場合、UNIQUE制約をつける。
 
  --CHECK制約
- ある列に格納される値が妥当であるかを細かく判定したい場合に用いる。    
+ ある列に格納される値が妥当であるかを細かく判定したい場合に用いる。     
+
+--主キー制約の指定
+CREATE TABLE 費目 (
+    ID INTEGER PRIMARY KEY,
+    名前　VARCHAR(40) UNIQUE
+)
+
+CREATE TABLE 費目 (
+    ID INTEGER,
+    名前　VARCHAR(40) UNIQUE,
+    PRIMARY KEY(ID,名前)
+)
