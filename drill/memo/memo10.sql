@@ -118,3 +118,16 @@ CREATE TABLE 費目 (
     名前　VARCHAR(40) UNIQUE,
     PRIMARY KEY(ID,名前)
 )
+
+CREATE TABLE 費目(
+    ID INTEGER PRIMARY KEY,
+    名前　VARCHAR(40) UNIQUE
+)
+
+CREATE TABLE 家計簿 (
+    日付　DATE NOT NULL,
+    費目ID INTEGER REFERENCES 費目(ID),
+    メモ VARCHAR(100) DEFAULT '不明' NOT NULL,
+    入金額 INTEGER 0 CHECK(入金額 >= 0),
+    出金額 INTEGER 0 CHECK(入金額 >= 0),
+    )
