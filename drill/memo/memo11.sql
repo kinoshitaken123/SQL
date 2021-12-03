@@ -23,4 +23,16 @@ SELECT * FROM 家計簿
  CREATE VIEW ビュー名 AS SEKECT文
  DROP VIEW ビュー名
 
- 
+ --各DBMSにおける連番の指定
+ CREATE TABLE 費目(
+     ID INTGEGER IDENTITY PRIMARY KEY,
+     :
+ )
+
+--シーケンスの作成と削除
+CREATE SEQUENCE シーケンス名
+DROP SEQUENCE シーケンス名
+
+
+
+
