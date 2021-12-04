@@ -33,6 +33,14 @@ SELECT * FROM 家計簿
 CREATE SEQUENCE シーケンス名
 DROP SEQUENCE シーケンス名
 
+--日付での並び替えや費目IDによる結合を行う家計簿テーブルの検索を高速に行う
+CREATE INDEX 日付インデックス　ON 家計簿(日付);
+CREATE INDEX 費目IDインデックス ON 家計簿(費目ID);
 
+--費目テーブルと結合済みの家計簿をビューを利用して手軽に使えるようにしたい
+CREATE VIEN 費目名付き家計簿 AS
+SELECT * FROM 家計簿
+　JOIN 費目
+   ON  家計簿.費目ID = 費目.ID
 
 
