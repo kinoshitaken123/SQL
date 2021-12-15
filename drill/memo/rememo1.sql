@@ -13,3 +13,10 @@ SELECT 出金額
 
    INSERT INTO 家計簿
    　　　VALUES ('2018-02-25','居住費','３月の家賃',0,85000) 
+
+   UPDATE 家計簿
+      SET 出勤額 = 90000
+     WHERE 日付 = '2018-02-25' 
+
+   DELETE FROM 家計簿
+         WHERE 日付 = '2019-02-15' 
